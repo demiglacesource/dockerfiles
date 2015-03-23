@@ -1,6 +1,7 @@
 FROM centos:centos7
 MAINTAINER demiglacesource <demiglacesource@gmail.com>
 
+ENV NODE_VERSION 0.12.0
 ADD ./MariaDB.repo /etc/yum.repos.d/
 
 RUN yum update -y
@@ -14,6 +15,7 @@ RUN yum install -y \
   tcpdump \
   MariaDB-server-10.0.16-1.el7.centos \
   MariaDB-client-10.0.16-1.el7.centos
+RUN yum clean all
 
 RUN mkdir /var/run/sshd
 ENTRYPOINT /usr/sbin/sshd -D
@@ -27,10 +29,9 @@ RUN ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
 
 ADD https://raw.githubusercontent.com/creationix/nvm/v0.23.3/install.sh .
 RUN bash install.sh
-RUN source /root/.bashrc && nvm install v0.12.0
-ENV PATH /root/.nvm/versions/node/v0.12.0/bin:$PATH
+RUN source /root/.bashrc && nvm install v$NODE_VERSION
+ENV PATH /root/.nvm/versions/node/v$NODE_VERSION/bin:$PATH
 
 EXPOSE 22
 EXPOSE 3000
 EXPOSE 3306
-
