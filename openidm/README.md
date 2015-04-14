@@ -6,7 +6,7 @@ Dockerfile for OpenIDM to build a docker container.
 Run
 -----
 
-    $ git clone https://github.com/demiglacesource/dockerfiles/openidm && cd openidm
+    $ git clone https://github.com/demiglacesource/dockerfiles && cd dockerfiles/openidm
     $ docker build -t openidm .
     $ docker run -d -p 8080:8080 openidm
 
