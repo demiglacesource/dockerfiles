@@ -17,11 +17,6 @@ Sharing Directories using volumes
     $ unzip openidm-3.2.0-SNAPSHOT.zip -d /opt
     $ docker run -d -p 8080:8080 -v /opt/openidm/conf:/opt/openidm/conf:rw -v /opt/openidm/logs:/opt/openidm/logs:rw  openidm
 
-Digression
-------------
-
-Like I put the openssh-server in order to debug, please erase If not necessary.
-
 Link
 ------
 
